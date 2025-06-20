@@ -11,29 +11,26 @@
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: #f4f4f4;
-      position: relative;
       overflow-x: hidden;
+      position: relative;
     }
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: url('fond.png') no-repeat center center fixed;
       background-size: cover;
       opacity: 0.4;
       z-index: -1;
     }
 
-    a { color: inherit; text-decoration: none; cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
     a:hover, a:focus { color: #ffcc00; }
 
     header {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100px;
       background: linear-gradient(to right, #003366, #006699, #009966);
@@ -72,15 +69,12 @@
       font-size: 20px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
       padding: 10px 8px;
       border-radius: 4px;
-      transition: background-color 0.3s, color 0.3s;
     }
-    nav a:hover, nav a:focus {
+    nav a:hover {
       background-color: #ffcc00;
       color: #003366;
-      outline: none;
     }
 
     .language-select {
@@ -90,30 +84,60 @@
       border: none;
       border-radius: 6px;
       padding: 8px 14px;
-      cursor: pointer;
-      transition: box-shadow 0.3s ease;
       font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
     }
-    .language-select:focus {
-      outline: none;
-      box-shadow: 0 0 8px #ffcc00;
+
+    #burgerBtn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .burger-line {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 800px) {
+      #burgerBtn { display: flex; }
+      nav {
+        position: fixed;
+        top: 100px;
+        right: 0;
+        background: linear-gradient(to right, #003366, #006699, #009966);
+        height: calc(100% - 100px);
+        width: 250px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 9999;
+      }
+      nav.open { transform: translateX(0); }
     }
 
     main {
       padding-top: 130px;
     }
-
     .container {
       max-width: 1000px;
-      margin: 0 auto 60px;
-      padding: 0 20px;
+      margin: auto;
+      padding: 20px;
     }
-
     section {
-      margin-bottom: 40px;
       background: white;
       padding: 25px;
       border-radius: 12px;
+      margin-bottom: 30px;
       box-shadow: 0 0 12px rgba(0,0,0,0.1);
       text-align: center;
     }
@@ -163,109 +187,65 @@
       font-size: 15px;
       text-align: left;
     }
-
-    footer {
-      background-color: #003366;
-      margin-top: 500px;
-      color: #eee;
-      padding: 30px 20px 15px;
-      font-family: 'Montserrat', sans-serif;
-    }
-
+  footer {
+    background-color: #003366;
+    color: #eee;
+    padding: 30px 20px;
+  }
+  .footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .footer-contact h3 {
+    font-size: 24px;
+    color: #ffcc00;
+  }
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #445577;
+    padding-top: 15px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .footer-bottom a {
+    color: #bbb;
+    text-decoration: none;
+  }
+  .footer-bottom a:hover {
+    color: #ffcc00;
+  }
+  @media (max-width: 600px) {
     .footer-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
-
-    .footer-contact h3 {
-      color: #ffcc00;
-      font-size: 26px;
-    }
-    .footer-contact a {
-      color: #eee;
-    }
-    .footer-contact a:hover {
-      color: #ffcc00;
-    }
-
-    .footer-socials {
-      font-size: 24px;
-      margin-top: 10px;
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 15px;
-      border-top: 1px solid #445577;
-      font-size: 14px;
-    }
-
-    /* Menu burger */
-    .burger-menu {
-      display: none;
-      font-size: 30px;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      margin-left: 20px;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        background-color: #003366;
-        position: absolute;
-        top: 100px;
-        left: 0;
-        width: 100%;
-        padding: 20px 0;
-        z-index: 10001;
-      }
-
-      nav.show {
-        display: flex;
-      }
-
-      .burger-menu {
-        display: block;
-      }
-    }
-
-    @media (max-width: 600px) {
-      nav a {
-        font-size: 18px;
-        padding: 12px 16px;
-        text-align: center;
-      }
-      .footer-container { flex-direction: column; gap: 20px; }
-    }
+  }
   </style>
 </head>
 <body>
-  <header id="header">
+  <header>
     <div class="header-left">
       <img src="logo.png" alt="Logo CAVELO" class="logo" />
       <div class="site-title">CAVELO</div>
     </div>
+    <button id="burgerBtn" aria-label="Menu">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
     <nav>
-      <a href="https://cavelo44000.github.io/Cavelo/Accueil">Accueil</a>
-      <a href="https://cavelo44000.github.io/Cavelo/En vente">En vente</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Question et Devis">Question et Devis</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Vidéographie">Vidéographie</a>
+      <a href="Accueil.html">Accueil</a>
+      <a href="En vente.html">En vente</a>
+      <a href="Question et Devis.html">Question et Devis</a>
+      <a href="Vidéographie.html">Vidéographie</a>
     </nav>
     <select class="language-select">
       <option value="fr" selected>Français</option>
       <option value="en">English</option>
     </select>
-    <button class="burger-menu" onclick="toggleMenu()">☰</button>
   </header>
 
   <main>
@@ -308,19 +288,23 @@
         <p><a href="tel:+33652497992">📞 +33 6 52 49 79 92</a></p>
         <p><a href="mailto:Cavelo44000@gmail.com">✉️ Cavelo44000@gmail.com</a></p>
         <p><a href="https://www.google.fr/maps?hl=fr" target="_blank">📍 Nantes, France</a></p>
-        <div class="footer-socials">
-          <a href="https://facebook.com/cavelo44000" target="_blank">👍</a>
-          <a href="https://instagram.com/cavelo44000" target="_blank">📸</a>
-          <a href="https://twitter.com/cavelo44000" target="_blank">🐦</a>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 CAVELO. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+      <p>© 2025 CAVELO. Tous droits réservés. |
+        <a href="mentions-legales.html">Mentions légales</a> |
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
     </div>
   </footer>
 
   <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const nav = document.querySelector('nav');
+    burgerBtn.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
     function toggleDevisMenu() {
       document.getElementById('devis-options').style.display = 'block';
       document.getElementById('form-container').style.display = 'none';
@@ -343,18 +327,6 @@
       document.getElementById('devis-options').style.display = 'none';
     }
 
-    function toggleMenu() {
-      document.querySelector("nav").classList.toggle("show");
-    }
-
-    // Optionnel : fermeture du menu au clic sur un lien (mobile)
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('nav').classList.remove('show');
-      });
-    });
-
-    // Optionnel : gestion formulaire (juste pour exemple, tu peux enlever)
     document.getElementById("contact-form").addEventListener("submit", function(event) {
       event.preventDefault();
       alert("Votre message a bien été envoyé !");
@@ -364,3 +336,4 @@
   </script>
 </body>
 </html>
+

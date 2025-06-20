@@ -1,50 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Accueil</title>
-  <link href="CAVELO%20-%20Accueil_fichiers/css2.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* Reset et base */
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: #f4f4f4;
-      position: relative;
       overflow-x: hidden;
+      position: relative;
     }
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: url('fond.png') no-repeat center center fixed;
       background-size: cover;
       opacity: 0.4;
       z-index: -1;
     }
-    a {
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    a:hover, a:focus {
-      color: #ffcc00;
-      outline: none;
-    }
+    a { color: inherit; text-decoration: none; }
+    a:hover, a:focus { color: #ffcc00; }
 
-    /* HEADER MENU */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100px;
       background: linear-gradient(to right, #003366, #006699, #009966);
@@ -56,7 +40,6 @@
       z-index: 10000;
       font-family: 'Cormorant Garamond', serif;
       border-bottom: 2px solid #ccc;
-      transition: top 0.3s ease;
     }
     .header-left {
       display: flex;
@@ -85,15 +68,12 @@
       letter-spacing: 1.5px;
       padding: 10px 8px;
       border-radius: 4px;
-      transition: background-color 0.3s, color 0.3s;
     }
     nav a:hover, nav a:focus {
       background-color: #ffcc00;
       color: #003366;
-      outline: none;
     }
     .language-select {
-      font-family: 'Montserrat', sans-serif;
       background: white;
       color: #003366;
       font-weight: 700;
@@ -101,217 +81,151 @@
       border-radius: 6px;
       padding: 8px 14px;
       cursor: pointer;
-      transition: box-shadow 0.3s ease;
-    }
-    .language-select:focus {
-      outline: none;
-      box-shadow: 0 0 8px #ffcc00;
+      font-family: 'Montserrat', sans-serif;
     }
 
-    /* VIDEO PUBLICITAIRE */
-    .video-container {
-      margin: 110px 1cm 40px; /* sous le menu, avec marge latérale */
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    .video-container iframe {
-      width: 100%;
-      height: 360px;
+    /* Responsive menu burger */
+    #burgerBtn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
       border: none;
-      display: block;
+      cursor: pointer;
+    }
+    .burger-line {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
     }
 
-    /* CONTENU PRINCIPAL */
+    @media (max-width: 800px) {
+      #burgerBtn { display: flex; }
+      nav {
+        position: fixed;
+        top: 100px;
+        right: 0;
+        background: linear-gradient(to right, #003366, #006699, #009966);
+        height: calc(100% - 100px);
+        width: 250px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 9999;
+      }
+      nav.open { transform: translateX(0); }
+    }
+
+    .video-container {
+      margin-top: 110px;
+      padding: 20px;
+      justify-content: center;  /* centre horizontalement */
+      align-items: center;
+    }
+    .video-container video {
+      width: 70%;
+      height: auto;
+      border-radius: 12px;
+      justify-content: center;  /* centre horizontalement */
+      align-items: center;
+    }
+
     .container {
       max-width: 1100px;
-      margin: 0 auto 60px;
-      padding: 0 20px;
-    }
-    .section {
-      background-color: white;
-      margin-bottom: 30px;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      font-size: 18px;
-      line-height: 1.5;
-    }
-    .section h2 {
-      margin-top: 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      color: #003366;
+      margin: auto;
+      padding: 20px;
     }
 
-    /* FOOTER */
+    .section {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
     footer {
       background-color: #003366;
       color: #eee;
-      font-family: 'Montserrat', sans-serif;
-      padding: 30px 20px 15px;
-      user-select: none;
+      padding: 30px 20px;
     }
     .footer-container {
       max-width: 1100px;
-      margin: 0 auto 15px;
+      margin: auto;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 25px;
+      justify-content: space-between;
+      gap: 20px;
     }
     .footer-contact h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 26px;
-      margin-bottom: 15px;
-      color: #ffcc00;
-    }
-    .footer-contact p {
-      margin: 5px 0;
-      font-size: 16px;
-    }
-    .footer-contact a {
-      color: #eee;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .footer-contact a:hover,
-    .footer-contact a:focus {
-      color: #ffcc00;
-      outline: none;
-    }
-    .footer-socials {
-      margin-top: 15px;
-      display: flex;
-      gap: 20px;
       font-size: 24px;
-    }
-    .footer-socials a {
-      color: #eee;
-      transition: color 0.3s;
-    }
-    .footer-socials a:hover,
-    .footer-socials a:focus {
       color: #ffcc00;
-      outline: none;
-    }
-    .footer-language {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      font-size: 16px;
-      color: #eee;
-    }
-    .footer-language label {
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .footer-language select {
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-      font-family: 'Montserrat', sans-serif;
-      cursor: pointer;
-      background: white;
-      color: #003366;
-      font-weight: 700;
-      transition: box-shadow 0.3s ease;
-    }
-    .footer-language select:focus {
-      outline: none;
-      box-shadow: 0 0 8px #ffcc00;
     }
     .footer-bottom {
+      text-align: center;
       border-top: 1px solid #445577;
-      max-width: 1100px;
-      margin: 0 auto;
       padding-top: 15px;
       font-size: 14px;
-      color: #bbb;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .footer-bottom p {
-      margin: 0;
+      margin-top: 20px;
     }
     .footer-bottom a {
       color: #bbb;
       text-decoration: none;
-      transition: color 0.3s;
     }
-    .footer-bottom a:hover,
-    .footer-bottom a:focus {
+    .footer-bottom a:hover {
       color: #ffcc00;
-      outline: none;
     }
-    /* Responsive */
+
     @media (max-width: 600px) {
-      nav {
-        gap: 15px;
-      }
-      .footer-container {
-        flex-direction: column;
-      }
-      .footer-language {
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 6px;
-        font-size: 13px;
-      }
-      .video-container iframe {
-        height: 220px;
-      }
+      .footer-container { flex-direction: column; }
+      .video-container video { height: 220px; }
     }
   </style>
 </head>
 <body>
-
-  <header id="header" style="top: 0px;">
+  <header>
     <div class="header-left">
-      <img src="logo.png" alt="Logo CAVELO" class="logo">
+      <img src="logo.png" alt="Logo CAVELO" class="logo" />
       <div class="site-title">CAVELO</div>
     </div>
+    <button id="burgerBtn" aria-label="Menu">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
     <nav>
-      <a href="https://cavelo44000.github.io/Cavelo/Accueil">Accueil</a>
-      <a href="https://cavelo44000.github.io/Cavelo/En%20vente">En vente</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Question%20etDevis">Question et Devis</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Vidéographie">Vidéographie</a>
+      <a href="Accueil.html">Accueil</a>
+      <a href="En vente.html">En vente</a>
+      <a href="Question et Devis.html">Question et Devis</a>
+      <a href="Vidéographie.html">Vidéographie</a>
     </nav>
-    <select id="languageSelect" class="language-select" aria-label="Choix de la langue">
-      <option value="fr" selected="selected">Français</option>
+    <select class="language-select">
+      <option value="fr" selected>Français</option>
       <option value="en">English</option>
     </select>
   </header>
 
-  <!-- Vidéo publicitaire -->
   <div class="video-container">
-    <video autoplay muted loop playsinline style="width: 100%; height: 360px; display: block; border: none;">
-      <source src="video%20accueil.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline>
+      <source src="video accueil.mp4" type="video/mp4">
     </video>
   </div>
 
-  <main class="container" role="main">
-    <section class="section" aria-label="Bienvenue">
+  <main class="container">
+    <section class="section">
       <h2>Bienvenue sur CAVELO</h2>
       <p>Explorez notre contenu en scrollant vers le bas avec la molette.</p>
     </section>
-    <section class="section" aria-label="Dernières annonces">
+    <section class="section">
       <h2>Dernières annonces</h2>
       <p>Contenu défilant naturellement.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vehicula felis ut risus accumsan.</p>
-    </section>
-    <section class="section" aria-label="À découvrir">
-      <h2>À découvrir</h2>
-      <p>Autres contenus à venir...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </section>
   </main>
 
@@ -319,75 +233,26 @@
     <div class="footer-container">
       <div class="footer-contact">
         <h3>CAVELO</h3>
-        <p><a href="tel:+33652497992" aria-label="Téléphone">📞 +33 6 52 49 79 92</a></p>
-        <p><a href="mailto:Cavelo44000@gmail.com" aria-label="Email">✉️ Cavelo44000@gmail.com</a></p>
-        <p><a href="https://www.google.fr/maps?hl=fr" target="_blank" rel="noopener" aria-label="Adresse">📍 Nantes, France</a></p>
-        <div class="footer-socials" aria-label="Réseaux sociaux">
-          <a href="https://facebook.com/cavelo44000" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">👍</a>
-          <a href="https://instagram.com/cavelo44000" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">📸</a>
-          <a href="https://twitter.com/cavelo44000" target="_blank" rel="noopener" aria-label="Twitter" title="Twitter">🐦</a>
-        </div>
-      </div>
-      <div class="footer-language">
-        <label for="languageSelectFooter">Langue :</label>
-        <select id="languageSelectFooter" aria-label="Choix de la langue">
-          <option value="fr" selected="selected">Français</option>
-          <option value="en">English</option>
-        </select>
+        <p><a href="tel:+33652497992">📞 +33 6 52 49 79 92</a></p>
+        <p><a href="mailto:Cavelo44000@gmail.com">✉️ Cavelo44000@gmail.com</a></p>
+        <p><a href="https://www.google.fr/maps?hl=fr" target="_blank">📍 Nantes, France</a></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 CAVELO. Tous droits réservés.</p>
-      <p><a href="file:///C:/Users/Martin/Documents/mentions-legales.html">Mentions légales</a> | <a href="file:///C:/Users/Martin/Documents/politique-confidentialite.html">Politique de confidentialité</a></p>
+      <p>© 2025 CAVELO. Tous droits réservés. |
+        <a href="mentions-legales.html">Mentions légales</a> |
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
     </div>
   </footer>
 
   <script>
-    // --- GESTION DU MENU QUI SE CACHE AU SCROLL ---
-    let lastScrollTop = 0;
-    const header = document.getElementById('header');
+    const burgerBtn = document.getElementById('burgerBtn');
+    const nav = document.querySelector('nav');
 
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll > lastScrollTop && currentScroll > 100) {
-        header.style.top = '-100px';
-      } else {
-        header.style.top = '0';
-      }
-      lastScrollTop = Math.max(currentScroll, 0); // pour éviter valeur négative
-    }, { passive: true });
-
-    // --- SYNCHRONISATION DES SELECTEURS DE LANGUE ---
-    const languageSelectMain = document.getElementById('languageSelect');
-    const languageSelectFooter = document.getElementById('languageSelectFooter');
-
-    // Fonction : change la langue et recharge la page
-    function setLanguage(lang) {
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', lang); // ajoute ?lang=fr ou ?lang=en
-      window.location.href = url.toString(); // recharge avec la nouvelle langue
-    }
-
-    // Changement depuis le header
-    languageSelectMain.addEventListener('change', () => {
-      const selectedLang = languageSelectMain.value;
-      languageSelectFooter.value = selectedLang; // synchro footer
-      setLanguage(selectedLang); // recharge
+    burgerBtn.addEventListener('click', () => {
+      nav.classList.toggle('open');
     });
-
-    // Changement depuis le footer
-    languageSelectFooter.addEventListener('change', () => {
-      const selectedLang = languageSelectFooter.value;
-      languageSelectMain.value = selectedLang; // synchro header
-      setLanguage(selectedLang); // recharge
-    });
-
-    // --- INITIALISATION AU CHARGEMENT DE LA PAGE ---
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || 'fr'; // valeur par défaut
-    languageSelectMain.value = currentLang;
-    languageSelectFooter.value = currentLang;
   </script>
-
 </body>
 </html>

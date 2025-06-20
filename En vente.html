@@ -1,380 +1,248 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>En vente</title>
-<link href="CAVELO%20-%20Accueil_fichiers/css2.css" rel="stylesheet" />
-<style>
-  /* Reset et base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f4f4f4;
-    position: relative;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('fond.png') no-repeat center center fixed;
-    background-size: cover;
-    opacity: 0.4;
-    z-index: -1;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  a:hover, a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
-
-  /* HEADER MENU */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to right, #003366, #006699, #009966);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    z-index: 10000;
-    font-family: 'Cormorant Garamond', serif;
-    border-bottom: 2px solid #ccc;
-    transition: top 0.3s ease;
-  }
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .logo {
-    height: 80px;
-    width: auto;
-  }
-  .site-title {
-    font-size: 48px;
-    font-weight: 700;
-    user-select: none;
-  }
-
-  /* Bouton burger - caché sur grand écran */
-  #burgerBtn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 24px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    box-sizing: content-box;
-    z-index: 11000; /* devant le header */
-  }
-  #burgerBtn:focus {
-    outline: 2px solid #ffcc00;
-  }
-  .burger-line {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-    transition: all 0.3s linear;
-    transform-origin: 1px;
-  }
-
-  nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-  }
-  nav a {
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 10px 8px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  nav a:hover, nav a:focus {
-    background-color: #ffcc00;
-    color: #003366;
-    outline: none;
-  }
-  .language-select {
-    font-family: 'Montserrat', sans-serif;
-    background: white;
-    color: #003366;
-    font-weight: 700;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
-  }
-  .language-select:focus {
-    outline: none;
-    box-shadow: 0 0 8px #ffcc00;
-  }
-
-  /* Responsive menu burger */
-  @media (max-width: 800px) {
-    nav {
-      position: fixed;
-      top: 100px; /* sous le header */
-      right: 0;
-      background: linear-gradient(to right, #003366, #006699, #009966);
-      height: calc(100% - 100px);
-      width: 250px;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
-      gap: 20px;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      z-index: 10500;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>En vente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f4f4;
+      overflow-x: hidden;
+      position: relative;
     }
-    nav.open {
-      transform: translateX(0);
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('fond.png') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.4;
+      z-index: -1;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover, a:focus { color: #ffcc00; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to right, #003366, #006699, #009966);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 10000;
+      font-family: 'Cormorant Garamond', serif;
+      border-bottom: 2px solid #ccc;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      height: 80px;
+      width: auto;
+    }
+    .site-title {
+      font-size: 48px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    nav {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
     }
     nav a {
-      width: 100%;
-      padding: 12px 16px;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 10px 8px;
+      border-radius: 4px;
     }
+    nav a:hover {
+      background-color: #ffcc00;
+      color: #003366;
+    }
+
+    .language-select {
+      background: white;
+      color: #003366;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+    }
+
     #burgerBtn {
-      display: flex;
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
     }
-  }
+    .burger-line {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
 
-  /* CONTENU PRINCIPAL */
-  main.main-content {
-    max-width: 1100px;
-    margin: 140px auto 60px; /* espace sous header fixe */
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    flex-wrap: wrap;
-    user-select: none;
-  }
-  .icon-card {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    padding: 30px 40px;
-    width: 280px;
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-  .icon-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255,204,0,0.6);
-  }
-  .icon-card img {
-    width: 180px;
-    height: auto;
-    margin-bottom: 15px;
-  }
-  .icon-card p.site-name {
-    margin: 10px 0 6px;
-    font-size: 24px;
-    font-weight: 900;
-    color: #003366;
-  }
-  .icon-card p.description {
-    font-size: 18px;
-    font-weight: 600;
-    color: #555;
-  }
+    @media (max-width: 800px) {
+      #burgerBtn { display: flex; }
+      nav {
+        position: fixed;
+        top: 100px;
+        right: 0;
+        background: linear-gradient(to right, #003366, #006699, #009966);
+        height: calc(100% - 100px);
+        width: 250px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 9999;
+      }
+      nav.open { transform: translateX(0); }
+    }
 
-  /* FOOTER */
-  footer {
-    background-color: #003366;
-    color: #eee;
-    font-family: 'Montserrat', sans-serif;
-    padding: 30px 20px 15px;
-    user-select: none;
-  }
-  .footer-container {
-    max-width: 1100px;
-    margin: 0 auto 15px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 25px;
-  }
-  .footer-contact h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 26px;
-    margin-bottom: 15px;
-    color: #ffcc00;
-  }
-  .footer-contact p {
-    margin: 5px 0;
-    font-size: 16px;
-  }
-  .footer-contact a {
-    color: #eee;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-contact a:hover,
-  .footer-contact a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
-  .footer-socials {
-    margin-top: 15px;
-    display: flex;
-    gap: 20px;
-    font-size: 24px;
-  }
-  .footer-socials a {
-    color: #eee;
-    transition: color 0.3s;
-  }
-  .footer-socials a:hover,
-  .footer-socials a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
-  .footer-language {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    font-size: 16px;
-    color: #eee;
-  }
-  .footer-language label {
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-  .footer-language select {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
-    background: white;
-    color: #003366;
-    font-weight: 700;
-    transition: box-shadow 0.3s ease;
-  }
-  .footer-language select:focus {
-    outline: none;
-    box-shadow: 0 0 8px #ffcc00;
-  }
-  .footer-bottom {
-    border-top: 1px solid #445577;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-top: 15px;
-    font-size: 14px;
-    color: #bbb;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .footer-bottom p {
-    margin: 0;
-  }
-  .footer-bottom a {
-    color: #bbb;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-bottom a:hover,
-  .footer-bottom a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
+    main {
+      max-width: 1100px;
+      margin: 140px auto 60px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    nav {
-      gap: 15px;
+    .icon-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      padding: 30px 40px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .icon-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,204,0,0.6);
+    }
+    .icon-card img {
+      width: 180px;
+      height: auto;
+      margin-bottom: 15px;
+    }
+    .icon-card p.site-name {
+      margin: 10px 0 6px;
+      font-size: 24px;
+      font-weight: 900;
+      color: #003366;
+    }
+    .icon-card p.description {
+      font-size: 18px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    footer {
+      background-color: #003366;
+      color: #eee;
+      padding: 30px 20px;
     }
     .footer-container {
-      flex-direction: column;
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .footer-language {
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
+    .footer-contact h3 {
+      font-size: 24px;
+      color: #ffcc00;
     }
     .footer-bottom {
-      flex-direction: column;
-      gap: 6px;
-      font-size: 13px;
+      text-align: center;
+      border-top: 1px solid #445577;
+      padding-top: 15px;
+      font-size: 14px;
+      margin-top: 20px;
     }
-    .main-content {
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      margin-top: 120px;
+    .footer-bottom a {
+      color: #bbb;
+      text-decoration: none;
     }
-    .icon-card {
-      width: 90%;
-      max-width: 320px;
+    .footer-bottom a:hover {
+      color: #ffcc00;
     }
-  }
-</style>
-</head>
 
+    @media (max-width: 600px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+      .icon-card {
+        width: 90%;
+        max-width: 320px;
+      }
+      .footer-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
 <body>
-  <header id="header" style="top: 0px;">
+  <header>
     <div class="header-left">
       <img src="logo.png" alt="Logo CAVELO" class="logo" />
       <div class="site-title">CAVELO</div>
     </div>
-    <button id="burgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="menuNav">
+    <button id="burgerBtn" aria-label="Menu">
       <span class="burger-line"></span>
       <span class="burger-line"></span>
       <span class="burger-line"></span>
     </button>
-    <nav id="menuNav">
-      <a href="https://cavelo44000.github.io/Cavelo/Accueil">Accueil</a>
-      <a href="https://cavelo44000.github.io/Cavelo/En vente">En vente</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Question et Devis">Question et Devis</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Vidéographie">Vidéographie</a>
+    <nav>
+      <a href="Accueil.html">Accueil</a>
+      <a href="En vente.html">En vente</a>
+      <a href="Question et Devis.html">Question et Devis</a>
+      <a href="Vidéographie.html">Vidéographie</a>
     </nav>
-    <select id="languageSelect" class="language-select" aria-label="Choix de la langue">
-      <option value="fr" selected="selected">Français</option>
+    <select class="language-select">
+      <option value="fr" selected>Français</option>
       <option value="en">English</option>
     </select>
   </header>
 
-  <main class="main-content">
+  <main>
     <div class="icon-card">
-      <a href="https://www.leboncoin.fr/profile/85d435c0-22f6-4710-b730-eede50030f87" target="_blank" rel="noopener" aria-label="Leboncoin - Achat vélo et pièces détachées">
+      <a href="https://www.leboncoin.fr/profile/85d435c0-22f6-4710-b730-eede50030f87" target="_blank" rel="noopener">
         <img src="lbc.png" alt="Logo Leboncoin" />
         <p class="site-name">Leboncoin</p>
         <p class="description">Achat vélo et pièces détachées</p>
       </a>
     </div>
     <div class="icon-card">
-      <a href="https://www.vinted.fr/member/275820612" target="_blank" rel="noopener" aria-label="Vinted - Accessoire">
+      <a href="https://www.vinted.fr/member/275820612" target="_blank" rel="noopener">
         <img src="vt.png" alt="Logo Vinted" />
         <p class="site-name">Vinted</p>
         <p class="description">Accessoire</p>
@@ -386,36 +254,24 @@
     <div class="footer-container">
       <div class="footer-contact">
         <h3>CAVELO</h3>
-        <p><a href="tel:+33652497992" aria-label="Téléphone">📞 +33 6 52 49 79 92</a></p>
-        <p><a href="mailto:Cavelo44000@gmail.com" aria-label="Email">✉️ Cavelo44000@gmail.com</a></p>
-        <p><a href="https://www.google.fr/maps?hl=fr" target="_blank" rel="noopener" aria-label="Adresse">📍 Nantes, France</a></p>
-        <div class="footer-socials" aria-label="Réseaux sociaux">
-          <a href="https://facebook.com/cavelo44000" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">👍</a>
-          <a href="https://instagram.com/cavelo44000" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">📸</a>
-          <a href="https://twitter.com/cavelo44000" target="_blank" rel="noopener" aria-label="Twitter" title="Twitter">🐦</a>
-        </div>
-      </div>
-      <div class="footer-language">
-        <label for="languageSelectFooter">Langue :</label>
-        <select id="languageSelectFooter" aria-label="Choix de la langue">
-          <option value="fr" selected="selected">Français</option>
-          <option value="en">English</option>
-        </select>
+        <p><a href="tel:+33652497992">📞 +33 6 52 49 79 92</a></p>
+        <p><a href="mailto:Cavelo44000@gmail.com">✉️ Cavelo44000@gmail.com</a></p>
+        <p><a href="https://www.google.fr/maps?hl=fr" target="_blank">📍 Nantes, France</a></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 CAVELO. Tous droits réservés.</p>
-      <p><a href="file:///C:/Users/Martin/Documents/mentions-legales.html">Mentions légales</a> | <a href="file:///C:/Users/Martin/Documents/politique-confidentialite.html">Politique de confidentialité</a></p>
+      <p>© 2025 CAVELO. Tous droits réservés. |
+        <a href="mentions-legales.html">Mentions légales</a> |
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
     </div>
   </footer>
 
   <script>
     const burgerBtn = document.getElementById('burgerBtn');
-    const menuNav = document.getElementById('menuNav');
-
+    const nav = document.querySelector('nav');
     burgerBtn.addEventListener('click', () => {
-      const isOpen = menuNav.classList.toggle('open');
-      burgerBtn.setAttribute('aria-expanded', isOpen);
+      nav.classList.toggle('open');
     });
   </script>
 </body>

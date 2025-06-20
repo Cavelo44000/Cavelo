@@ -1,351 +1,247 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vidéographie</title>
-<link href="CAVELO%20-%20Accueil_fichiers/css2.css" rel="stylesheet" />
-<style>
-  /* Reset et base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f4f4f4;
-    position: relative;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('fond2.png') no-repeat center center fixed;
-    background-size: cover;
-    opacity: 0.4;
-    z-index: -1;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  a:hover, a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vidéographie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f4f4;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('fond2.png') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.4;
+      z-index: -1;
+    }
 
-  /* HEADER MENU */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to right, #003366, #006699, #009966);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    z-index: 10000;
-    font-family: 'Cormorant Garamond', serif;
-    border-bottom: 2px solid #ccc;
-    transition: top 0.3s ease;
-  }
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .logo {
-    height: 80px;
-    width: auto;
-  }
-  .site-title {
-    font-size: 48px;
-    font-weight: 700;
-    user-select: none;
-  }
-  nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-  }
-  nav a {
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 10px 8px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  nav a:hover, nav a:focus {
-    background-color: #ffcc00;
-    color: #003366;
-    outline: none;
-  }
-  .language-select {
-    font-family: 'Montserrat', sans-serif;
-    background: white;
-    color: #003366;
-    font-weight: 700;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
-  }
-  .language-select:focus {
-    outline: none;
-    box-shadow: 0 0 8px #ffcc00;
-  }
+    a { color: inherit; text-decoration: none; }
+    a:hover, a:focus { color: #ffcc00; }
 
-  /* Hamburger button */
-  .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 36px;
-    color: white;
-    cursor: pointer;
-    margin-left: 20px;
-  }
-
-  /* FOOTER */
-  footer {
-    background-color: #003366;
-    color: #eee;
-    font-family: 'Montserrat', sans-serif;
-    padding: 30px 20px 15px;
-    user-select: none;
-  }
-  .footer-container {
-    max-width: 1100px;
-    margin: 0 auto 15px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 25px;
-  }
-  .footer-contact h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 26px;
-    margin-bottom: 15px;
-    color: #ffcc00;
-  }
-  .footer-contact p {
-    margin: 5px 0;
-    font-size: 16px;
-  }
-  .footer-contact a {
-    color: #eee;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-contact a:hover,
-  .footer-contact a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
-  .footer-socials {
-    margin-top: 15px;
-    display: flex;
-    gap: 20px;
-    font-size: 24px;
-  }
-  .footer-socials a {
-    color: #eee;
-    transition: color 0.3s;
-  }
-  .footer-socials a:hover,
-  .footer-socials a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
-  .footer-language {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    font-size: 16px;
-    color: #eee;
-  }
-  .footer-language label {
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-  .footer-language select {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
-    background: white;
-    color: #003366;
-    font-weight: 700;
-    transition: box-shadow 0.3s ease;
-  }
-  .footer-language select:focus {
-    outline: none;
-    box-shadow: 0 0 8px #ffcc00;
-  }
-  .footer-bottom {
-    border-top: 1px solid #445577;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-top: 15px;
-    font-size: 14px;
-    color: #bbb;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .footer-bottom p {
-    margin: 0;
-  }
-  .footer-bottom a {
-    color: #bbb;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-bottom a:hover,
-  .footer-bottom a:focus {
-    color: #ffcc00;
-    outline: none;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    nav {
-      position: absolute;
-      top: 100px;
-      left: 0;
-      right: 0;
-      background-color: #006699;
-      flex-direction: column;
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to right, #003366, #006699, #009966);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 10000;
+      font-family: 'Cormorant Garamond', serif;
+      border-bottom: 2px solid #ccc;
+    }
+    .header-left {
+      display: flex;
       align-items: center;
       gap: 20px;
-      padding: 20px 0;
-      display: none;
+    }
+    .logo {
+      height: 80px;
+      width: auto;
+    }
+    .site-title {
+      font-size: 48px;
+      font-weight: 700;
+      user-select: none;
     }
 
-    nav.open {
+    nav {
+      flex: 1;
       display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    nav a {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 10px 8px;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background-color: #ffcc00;
+      color: #003366;
     }
 
-    .hamburger {
-      display: block;
+    .language-select {
+      background: white;
+      color: #003366;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
     }
 
-    .footer-container {
+    #burgerBtn {
+      display: none;
       flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
     }
-    .footer-language {
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
+    .burger-line {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 800px) {
+      #burgerBtn { display: flex; }
+      nav {
+        position: fixed;
+        top: 100px;
+        right: 0;
+        background: linear-gradient(to right, #003366, #006699, #009966);
+        height: calc(100% - 100px);
+        width: 250px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 9999;
+      }
+      nav.open { transform: translateX(0); }
+    }
+
+    .intro {
+      padding: 130px 20px 40px;
+      text-align: center;
+    }
+    .intro h1 {
+      font-size: 36px;
+      color: #003366;
+    }
+    .intro p {
+      font-size: 18px;
+    }
+
+    .video-section {
+      background: rgba(255, 255, 255, 0.8);
+      margin: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    .video-section h3 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: black;
+      text-align: center;
+    }
+
+    .video-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .video-list iframe {
+      width: 320px;
+      height: 180px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .video-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .video-list iframe {
+        width: 90vw;
+        max-width: 320px;
+        height: 200px;
+      }
+    }
+
+    footer {
+      background-color: #003366;
+      color: #eee;
+      padding: 30px 20px;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-contact h3 {
+      font-size: 24px;
+      color: #ffcc00;
     }
     .footer-bottom {
-      flex-direction: column;
-      gap: 6px;
-      font-size: 13px;
+      text-align: center;
+      border-top: 1px solid #445577;
+      padding-top: 15px;
+      font-size: 14px;
+      margin-top: 20px;
     }
-    .video-list iframe {
-      height: 220px;
+    .footer-bottom a {
+      color: #bbb;
+      text-decoration: none;
     }
-  }
-
-  .intro {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    margin: 20px;
-    border-radius: 12px;
-    backdrop-filter: blur(4px);
-    text-align: center;
-  }
-  .intro h1 {
-    margin-top: 130px;
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  .intro p {
-    font-size: 18px;
-  }
-
-  .video-section {
-    background: rgba(255, 255, 255, 0.08);
-    margin: 40px 20px;
-    padding: 20px;
-    border-radius: 12px;
-  }
-  .video-section h3 {
-    font-size: 26px;
-    margin-bottom: 20px;
-    color: black;
-    text-align: center;
-  }
-
-  .video-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .video-list iframe {
-    width: 320px;
-    height: 180px;
-    border: none;
-    border-radius: 10px;
-  }
-
-  @media (max-width: 768px) {
-    .video-list {
-      flex-direction: column;
-      align-items: center;
+    .footer-bottom a:hover {
+      color: #ffcc00;
     }
-    .video-list iframe {
-      width: 90vw;
-      max-width: 320px;
+
+    @media (max-width: 600px) {
+      .footer-container {
+        flex-direction: column;
+      }
     }
-  }
-</style>
+  </style>
 </head>
 <body>
-  <header id="header" style="top: 0px;">
+  <header>
     <div class="header-left">
       <img src="logo.png" alt="Logo CAVELO" class="logo" />
       <div class="site-title">CAVELO</div>
     </div>
-
-    <!-- Bouton hamburger -->
-    <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">☰</button>
-
+    <button id="burgerBtn" aria-label="Menu">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
     <nav>
-      <a href="https://cavelo44000.github.io/Cavelo/Accueil">Accueil</a>
-      <a href="https://cavelo44000.github.io/Cavelo/En vente">En vente</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Question et Devis">Question et Devis</a>
-      <a href="https://cavelo44000.github.io/Cavelo/Vidéographie">Vidéographie</a>
+      <a href="Accueil.html">Accueil</a>
+      <a href="En vente.html">En vente</a>
+      <a href="Question et Devis.html">Question et Devis</a>
+      <a href="Vidéographie.html">Vidéographie</a>
     </nav>
-
-    <select id="languageSelect" class="language-select" aria-label="Choix de la langue">
-      <option value="fr" selected="selected">Français</option>
+    <select class="language-select">
+      <option value="fr" selected>Français</option>
       <option value="en">English</option>
     </select>
   </header>
 
   <section class="intro">
     <h1>Vidéographie</h1>
-    <p>Découvrez nos recommandations de vidéos dédiées au vélo par type : compilation ride, actualité, course du moment. Faites défiler pour explorer.</p>
+    <p>Découvrez nos vidéos sélectionnées : ride, course, actualité vélo.</p>
   </section>
 
   <section class="video-section">
@@ -368,7 +264,7 @@
     <h3>Course du moment</h3>
     <div class="video-list">
       <iframe src="https://www.youtube.com/embed/AZf6KQn18_8" allowfullscreen title="Course vélo route"></iframe>
-      <iframe src="https://www.youtube.com/embed/xb0j3fjdiIg" allowfullscreen title="Vélo nouveau tech"></iframe>
+      <iframe src="https://www.youtube.com/embed/xb0j3fjdiIg" allowfullscreen title="Vélo nouvelle tech"></iframe>
     </div>
   </section>
 
@@ -376,35 +272,25 @@
     <div class="footer-container">
       <div class="footer-contact">
         <h3>CAVELO</h3>
-        <p><a href="tel:+33652497992" aria-label="Téléphone">📞 +33 6 52 49 79 92</a></p>
-        <p><a href="mailto:Cavelo44000@gmail.com" aria-label="Email">✉️ Cavelo44000@gmail.com</a></p>
-        <p><a href="https://www.google.fr/maps?hl=fr" target="_blank" rel="noopener" aria-label="Adresse">📍 Nantes, France</a></p>
-        <div class="footer-socials" aria-label="Réseaux sociaux">
-          <a href="https://facebook.com/cavelo44000" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">👍</a>
-          <a href="https://instagram.com/cavelo44000" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">📸</a>
-          <a href="https://twitter.com/cavelo44000" target="_blank" rel="noopener" aria-label="Twitter" title="Twitter">🐦</a>
-        </div>
-      </div>
-      <div class="footer-language">
-        <label for="languageSelectFooter">Langue :</label>
-        <select id="languageSelectFooter" aria-label="Choix de la langue">
-          <option value="fr" selected="selected">Français</option>
-          <option value="en">English</option>
-        </select>
+        <p><a href="tel:+33652497992">📞 +33 6 52 49 79 92</a></p>
+        <p><a href="mailto:Cavelo44000@gmail.com">✉️ Cavelo44000@gmail.com</a></p>
+        <p><a href="https://www.google.fr/maps?hl=fr" target="_blank">📍 Nantes, France</a></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 CAVELO. Tous droits réservés.</p>
-      <p><a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+      <p>© 2025 CAVELO. Tous droits réservés. |
+        <a href="mentions-legales.html">Mentions légales</a> |
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
     </div>
   </footer>
 
-  <!-- Script menu responsive -->
   <script>
-    function toggleMenu() {
-      const nav = document.querySelector("nav");
-      nav.classList.toggle("open");
-    }
+    const burgerBtn = document.getElementById('burgerBtn');
+    const nav = document.querySelector('nav');
+    burgerBtn.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
   </script>
 </body>
 </html>
