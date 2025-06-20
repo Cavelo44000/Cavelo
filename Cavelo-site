@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f4f4;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('fond.png') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.4;
+      z-index: -1;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover, a:focus { color: #ffcc00; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to right, #003366, #006699, #009966);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 10000;
+      font-family: 'Cormorant Garamond', serif;
+      border-bottom: 2px solid #ccc;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      height: 80px;
+      width: auto;
+    }
+    .site-title {
+      font-size: 48px;
+      font-weight: 700;
+      user-select: none;
+    }
+    nav {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    nav a {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 8px;
+      border-radius: 4px;
+    }
+    nav a:hover, nav a:focus {
+      background-color: #ffcc00;
+      color: #003366;
+    }
+    .language-select {
+      background: white;
+      color: #003366;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Responsive menu burger */
+    #burgerBtn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .burger-line {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 800px) {
+      #burgerBtn { display: flex; }
+      nav {
+        position: fixed;
+        top: 100px;
+        right: 0;
+        background: linear-gradient(to right, #003366, #006699, #009966);
+        height: calc(100% - 100px);
+        width: 250px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 9999;
+      }
+      nav.open { transform: translateX(0); }
+    }
+
+    .video-container {
+      margin-top: 110px;
+      padding: 20px;
+      justify-content: center;  /* centre horizontalement */
+      align-items: center;
+    }
+    .video-container video {
+      width: 70%;
+      height: auto;
+      border-radius: 12px;
+      justify-content: center;  /* centre horizontalement */
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #003366;
+      color: #eee;
+      padding: 30px 20px;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-contact h3 {
+      font-size: 24px;
+      color: #ffcc00;
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #445577;
+      padding-top: 15px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .footer-bottom a {
+      color: #bbb;
+      text-decoration: none;
+    }
+    .footer-bottom a:hover {
+      color: #ffcc00;
+    }
+
+    @media (max-width: 600px) {
+      .footer-container { flex-direction: column; }
+      .video-container video { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="logo.png" alt="Logo CAVELO" class="logo" />
+      <div class="site-title">CAVELO</div>
+    </div>
+    <button id="burgerBtn" aria-label="Menu">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+    <nav>
+      <a href="Accueil.html">Accueil</a>
+      <a href="En vente.html">En vente</a>
+      <a href="Question et Devis.html">Question et Devis</a>
+      <a href="Vidéographie.html">Vidéographie</a>
+    </nav>
+    <select class="language-select">
+      <option value="fr" selected>Français</option>
+      <option value="en">English</option>
+    </select>
+  </header>
+
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="video accueil.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <main class="container">
+    <section class="section">
+      <h2>Bienvenue sur CAVELO</h2>
+      <p>Explorez notre contenu en scrollant vers le bas avec la molette.</p>
+    </section>
+    <section class="section">
+      <h2>Dernières annonces</h2>
+      <p>Contenu défilant naturellement.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-contact">
+        <h3>CAVELO</h3>
+        <p><a href="tel:+33652497992">📞 +33 6 52 49 79 92</a></p>
+        <p><a href="mailto:Cavelo44000@gmail.com">✉️ Cavelo44000@gmail.com</a></p>
+        <p><a href="https://www.google.fr/maps?hl=fr" target="_blank">📍 Nantes, France</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CAVELO. Tous droits réservés. |
+        <a href="mentions-legales.html">Mentions légales</a> |
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const nav = document.querySelector('nav');
+
+    burgerBtn.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
