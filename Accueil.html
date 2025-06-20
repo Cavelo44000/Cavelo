@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="fr">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Accueil</title>
   <link href="CAVELO%20-%20Accueil_fichiers/css2.css" rel="stylesheet">
   <style>
-	
     /* Reset et base */
     * {
       box-sizing: border-box;
     }
-     body {
+    body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: #f4f4f4;
@@ -271,56 +271,8 @@
         height: 220px;
       }
     }
-
   </style>
 </head>
-<script>
-  // --- GESTION DU MENU QUI SE CACHE AU SCROLL ---
-  let lastScrollTop = 0;
-  const header = document.getElementById('header');
-
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop && currentScroll > 100) {
-      header.style.top = '-100px';
-    } else {
-      header.style.top = '0';
-    }
-    lastScrollTop = Math.max(currentScroll, 0); // pour éviter valeur négative
-  }, { passive: true });
-
-  // --- SYNCHRONISATION DES SELECTEURS DE LANGUE ---
-  const languageSelectMain = document.getElementById('languageSelect');
-  const languageSelectFooter = document.getElementById('languageSelectFooter');
-
-  // Fonction : change la langue et recharge la page
-  function setLanguage(lang) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang); // ajoute ?lang=fr ou ?lang=en
-    window.location.href = url.toString(); // recharge avec la nouvelle langue
-  }
-
-  // Changement depuis le header
-  languageSelectMain.addEventListener('change', () => {
-    const selectedLang = languageSelectMain.value;
-    languageSelectFooter.value = selectedLang; // synchro footer
-    setLanguage(selectedLang); // recharge
-  });
-
-  // Changement depuis le footer
-  languageSelectFooter.addEventListener('change', () => {
-    const selectedLang = languageSelectFooter.value;
-    languageSelectMain.value = selectedLang; // synchro header
-    setLanguage(selectedLang); // recharge
-  });
-
-  // --- INITIALISATION AU CHARGEMENT DE LA PAGE ---
-  const urlParams = new URLSearchParams(window.location.search);
-  const currentLang = urlParams.get('lang') || 'fr'; // valeur par défaut
-  languageSelectMain.value = currentLang;
-  languageSelectFooter.value = currentLang;
-</script>
-
 <body>
 
   <header id="header" style="top: 0px;">
@@ -329,10 +281,10 @@
       <div class="site-title">CAVELO</div>
     </div>
     <nav>
-      <a href="file:///C:/Users/Martin/Documents/cavelo-site/Accueil.html">Accueil</a>
-      <a href="file:///C:/Users/Martin/Documents/cavelo-site/En%20vente.html">En vente</a>
-      <a href="file:///C:/Users/Martin/Documents/cavelo-site/Question%20et%20Devis.html">Question et Devis</a>
-      <a href="file:///C:/Users/Martin/Documents/cavelo-site/Vid%C3%A9ographie.html">Vidéographie</a>
+      <a href="https://cavelo44000.github.io/Cavelo/Accueil">Accueil</a>
+      <a href="https://cavelo44000.github.io/Cavelo/En%20vente">En vente</a>
+      <a href="https://cavelo44000.github.io/Cavelo/Question%20etDevis">Question et Devis</a>
+      <a href="https://cavelo44000.github.io/Cavelo/Vidéographie">Vidéographie</a>
     </nav>
     <select id="languageSelect" class="language-select" aria-label="Choix de la langue">
       <option value="fr" selected="selected">Français</option>
@@ -343,9 +295,8 @@
   <!-- Vidéo publicitaire -->
   <div class="video-container">
     <video autoplay muted loop playsinline style="width: 100%; height: 360px; display: block; border: none;">
-     <source src="video%20accueil.mp4" type="video/mp4">
+      <source src="video%20accueil.mp4" type="video/mp4">
     </video>
-
   </div>
 
   <main class="container" role="main">
@@ -392,39 +343,51 @@
   </footer>
 
   <script>
-    // Gestion du menu : cacher quand on scroll vers le bas, afficher vers le haut
+    // --- GESTION DU MENU QUI SE CACHE AU SCROLL ---
     let lastScrollTop = 0;
     const header = document.getElementById('header');
+
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       if (currentScroll > lastScrollTop && currentScroll > 100) {
-        // Scroll down
         header.style.top = '-100px';
       } else {
-        // Scroll up
         header.style.top = '0';
       }
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Pour éviter valeur négative
+      lastScrollTop = Math.max(currentScroll, 0); // pour éviter valeur négative
     }, { passive: true });
 
-    // Synchronisation des sélecteurs langue header/footer
+    // --- SYNCHRONISATION DES SELECTEURS DE LANGUE ---
     const languageSelectMain = document.getElementById('languageSelect');
     const languageSelectFooter = document.getElementById('languageSelectFooter');
 
+    // Fonction : change la langue et recharge la page
+    function setLanguage(lang) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang); // ajoute ?lang=fr ou ?lang=en
+      window.location.href = url.toString(); // recharge avec la nouvelle langue
+    }
+
+    // Changement depuis le header
     languageSelectMain.addEventListener('change', () => {
-      languageSelectFooter.value = languageSelectMain.value;
-      // Ici tu peux ajouter une fonction pour changer le contenu selon la langue
+      const selectedLang = languageSelectMain.value;
+      languageSelectFooter.value = selectedLang; // synchro footer
+      setLanguage(selectedLang); // recharge
     });
 
+    // Changement depuis le footer
     languageSelectFooter.addEventListener('change', () => {
-      languageSelectMain.value = languageSelectFooter.value;
-      languageSelectMain.dispatchEvent(new Event('change'));
+      const selectedLang = languageSelectFooter.value;
+      languageSelectMain.value = selectedLang; // synchro header
+      setLanguage(selectedLang); // recharge
     });
 
-    // Initialisation
-    languageSelectFooter.value = languageSelectMain.value;
+    // --- INITIALISATION AU CHARGEMENT DE LA PAGE ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lang') || 'fr'; // valeur par défaut
+    languageSelectMain.value = currentLang;
+    languageSelectFooter.value = currentLang;
   </script>
 
-
-
-</body></html>
+</body>
+</html>
